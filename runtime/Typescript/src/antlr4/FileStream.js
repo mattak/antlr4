@@ -4,7 +4,6 @@
  */
 
 import InputStream from './InputStream.js';
-import fs from "fs";
 
 /**
  * This is an InputStream that is loaded from a file all at once
@@ -12,8 +11,10 @@ import fs from "fs";
  */
 export default class FileStream extends InputStream {
 	constructor(fileName, decodeToUnicodeCodePoints) {
-		const data = fs.readFileSync(fileName, "utf8");
-		super(data, decodeToUnicodeCodePoints);
-		this.fileName = fileName;
+      super(fileName, decodeToUnicodeCodePoints);
+      throw new Error("not support nodejs fs api");
+		// const data = fs.readFileSync(fileName, "utf8");
+		// super(data, decodeToUnicodeCodePoints);
+		// this.fileName = fileName;
 	}
 }
