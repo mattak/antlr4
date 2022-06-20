@@ -4,7 +4,7 @@
  */
 
 import InputStream from './InputStream.js';
-import fs from "fs";
+// import fs from "fs";
 
 /**
  * Utility functions to create InputStreams from various sources.
@@ -53,13 +53,14 @@ export default {
    * Invokes callback(error, result) on completion.
    */
   fromPath: function(path, encoding, callback) {
-    fs.readFile(path, encoding, function(err, data) {
-      let is = null;
-      if (data !== null) {
-        is = new InputStream(data, true);
-      }
-      callback(err, is);
-    });
+    throw new Error("Not support function using nodejs fs api");
+    // fs.readFile(path, encoding, function(err, data) {
+    //   let is = null;
+    //   if (data !== null) {
+    //     is = new InputStream(data, true);
+    //   }
+    //   callback(err, is);
+    // });
   },
 
   /**
@@ -68,7 +69,8 @@ export default {
    * 'utf8' if encoding is null).
    */
   fromPathSync: function(path, encoding) {
-    const data = fs.readFileSync(path, encoding);
-    return new InputStream(data, true);
+    throw new Error("Not support function using nodejs fs api");
+    // const data = fs.readFileSync(path, encoding);
+    // return new InputStream(data, true);
   }
 };
